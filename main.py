@@ -2,6 +2,7 @@ import requests
 import bs4
 import time
 import schedule
+import os
 
 
 url = "https://www.amazon.com/dp/B08S8J19XJ?tag=camelproducts-20&linkCode=ogi&th=1&psc=1&language=en_US"
