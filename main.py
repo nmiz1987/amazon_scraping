@@ -26,9 +26,9 @@ def check():
         except:
             price = ''
     msg = f"price: {price}$, or {price*3.4} NIS"
-    requests.get(base + "500G SSD" + "\n"+msg +"\n"+ url)
+    requests.get(send_url + "500G SSD" + "\n"+msg +"\n"+ url)
 
-schedule.every().day.at("23:20").do(check)
+schedule.every().day.at("23:59").do(check)
 while True:
     schedule.run_pending()
     time.sleep(1)
