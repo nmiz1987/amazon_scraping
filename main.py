@@ -1,0 +1,34 @@
+import requests
+import bs4
+import time
+import schedule
+
+
+url = "https://www.amazon.com/dp/B08S8J19XJ?tag=camelproducts-20&linkCode=ogi&th=1&psc=1&language=en_US"
+HEADERS = ({'User-Agent':
+            'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
+            'Accept-Language': 'en-US, en;q=0.5'})
+
+send_url = environ['SEND_URL']
+
+
+def check():
+    r = requests.get(url, headers=HEADERS)
+    soup = bs4.BeautifulSoup(r.content, features="lxml")
+    title = soup.find(id='productTitle').get_text().strip()
+    # to prevent script from crashing when there isn't a price for the product
+    try:
+        price = float(soup.find(id='priceblock_ourprice').get_text().replace('.', '').replace('€', '').replace(',', '.').strip())
+    except:
+        # this part gets the price in dollars from amazon.com store
+        try:
+            price = float(soup.find(id='priceblock_ourprice').get_text().replace('$', '').replace(',', '').strip())
+        except:
+            price = ''
+    msg = f"price: {price}$, or {price*3.4} NIS"
+    requests.get(base + "500G SSD" + "\n"+msg +"\n"+ url)
+
+schedule.every().day.at("23:20").do(check)
+while True:
+    schedule.run_pending()
+    time.sleep(1)
