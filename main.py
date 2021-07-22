@@ -24,8 +24,8 @@ def check(title, url):
         try:
             price = float(soup.find(id='priceblock_ourprice').get_text().replace('$', '').replace(',', '').strip())
         except:
-            price = ''
-    print(type(price))
+            price = 'problem'
+    print(price)
     msg = f"price: {price}$"
     requests.get(send_url + title + "\n"+msg +"\n"+ url)
 
