@@ -19,13 +19,14 @@ def check(title, url):
     # to prevent script from crashing when there isn't a price for the product
     try:
         print("-----------------------> find price")
+        print("***** ",soup.find(id='priceblock_ourprice'))
         price = float(soup.find(id='priceblock_ourprice').get_text().replace('.', '').replace('€', '').replace(',', '.').strip())
     except:
         # this part gets the price in dollars from amazon.com store
         try:
             price = float(soup.find(id='priceblock_ourprice').get_text().replace('$', '').replace(',', '').strip())
         except Exception as err:
-            price = 'problem'
+            price = ''
             print("Error info:", err)
         
     
