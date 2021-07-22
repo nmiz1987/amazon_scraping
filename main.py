@@ -18,14 +18,16 @@ def check(title, url):
     soup = bs4.BeautifulSoup(r.content, features="lxml")
     # to prevent script from crashing when there isn't a price for the product
     try:
+        print("-----------------------> start")
         price = float(soup.find(id='priceblock_ourprice').get_text().replace('.', '').replace('€', '').replace(',', '.').strip())
+        print("-----------------------> finish", price)
     except:
         # this part gets the price in dollars from amazon.com store
         try:
             price = float(soup.find(id='priceblock_ourprice').get_text().replace('$', '').replace(',', '').strip())
         except:
             price = 'problem'
-    print(price)
+    
     msg = f"price: {price}$"
     requests.get(send_url + title + "\n"+msg +"\n"+ url)
 
