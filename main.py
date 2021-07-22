@@ -9,7 +9,7 @@ HEADERS = ({'User-Agent':
             'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
             'Accept-Language': 'en-US, en;q=0.5'})
 
-send_url = os.environ['SEND_URL']
+# send_url = os.environ['SEND_URL']
 
 print("Program starts...")
 
@@ -19,9 +19,8 @@ def check(title, url):
     # to prevent script from crashing when there isn't a price for the product
     try:
         print("-----------------------> find price")
-        time.sleep(2)
-        print("***** ",soup)
-        # price = float(soup.find(id='priceblock_ourprice').get_text().replace('.', '').replace('€', '').replace(',', '.').strip())
+        print("***** ",soup.find(id='priceblock_ourprice').get_text().replace('.', '').replace('€', '').replace(',', '.').strip())
+        price = float(soup.find(id='priceblock_ourprice').get_text().replace('.', '').replace('€', '').replace(',', '.').strip())
     except:
         # this part gets the price in dollars from amazon.com store
         try:
