@@ -25,7 +25,7 @@ def check(title, url):
             price = float(soup.find(id='priceblock_ourprice').get_text().replace('$', '').replace(',', '').strip())
         except:
             price = ''
-    price_IL = price*3.4
+    price_IL = float(price)*3.4
     msg = f"price: {price}$, or {price_IL} NIS"
     requests.get(send_url + title + "\n"+msg +"\n"+ url)
 
