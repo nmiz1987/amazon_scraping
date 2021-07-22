@@ -11,7 +11,7 @@ HEADERS = ({'User-Agent':
 
 send_url = environ['SEND_URL']
 
-print("Program starts...")
+print("Program starts....")
 
 def check(title, url):
     r = requests.get(url, headers=HEADERS)
