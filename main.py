@@ -18,20 +18,18 @@ def check(title, url):
     soup = bs4.BeautifulSoup(r.content, features="lxml")
     # to prevent script from crashing when there isn't a price for the product
     try:
-        print("-----------------------> find price")
-        print("***** ",soup.find(id='priceblock_ourprice').get_text().replace('.', '').replace('€', '').replace(',', '.').strip())
         price = float(soup.find(id='priceblock_ourprice').get_text().replace('.', '').replace('€', '').replace(',', '.').strip())
     except:
         # this part gets the price in dollars from amazon.com store
         try:
             price = float(soup.find(id='priceblock_ourprice').get_text().replace('$', '').replace(',', '').strip())
+            print("3)",soup.find(id='priceblock_ourprice').get_text())
         except Exception as err:
             price = ''
             print("Error info:", err)
         
     
     msg = f"price: {price}$"
-    print("--------------------> ",msg)
     # requests.get(send_url + title + "\n"+msg +"\n"+ url)
 
 check(title="500G SSD", url="https://www.amazon.com/dp/B08S8J19XJ?tag=camelproducts-20&linkCode=ogi&th=1&psc=1&language=en_US")
