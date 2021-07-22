@@ -23,7 +23,7 @@ def check(title, url):
         # this part gets the price in dollars from amazon.com store
         try:
             price = float(soup.find(id='priceblock_ourprice').get_text().replace('$', '').replace(',', '').strip())
-            print("3)",soup.find(id='priceblock_ourprice').get_text())
+            print("3)",soup.find(id='priceblock_ourprice'))
         except Exception as err:
             price = ''
             print("Error info:", err)
