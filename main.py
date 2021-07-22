@@ -24,8 +24,10 @@ def check(title, url):
         # this part gets the price in dollars from amazon.com store
         try:
             price = float(soup.find(id='priceblock_ourprice').get_text().replace('$', '').replace(',', '').strip())
-        except:
+        except Exception as err:
             price = 'problem'
+            print("Error info:", err)
+        
     
     msg = f"price: {price}$"
     print("--------------------> ",msg)
