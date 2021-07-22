@@ -20,8 +20,8 @@ def check(title, url):
     try:
         print("-----------------------> find price")
         time.sleep(2)
-        print("***** ",soup.find(id='priceblock_ourprice'))
-        price = float(soup.find(id='priceblock_ourprice').get_text().replace('.', '').replace('€', '').replace(',', '.').strip())
+        print("***** ",soup)
+        # price = float(soup.find(id='priceblock_ourprice').get_text().replace('.', '').replace('€', '').replace(',', '.').strip())
     except:
         # this part gets the price in dollars from amazon.com store
         try:
