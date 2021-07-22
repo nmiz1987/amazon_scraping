@@ -29,7 +29,7 @@ def check(title, url):
     requests.get(send_url + title + "\n"+msg +"\n"+ url)
 
 check(title="500G SSD", url="https://www.amazon.com/dp/B08S8J19XJ?tag=camelproducts-20&linkCode=ogi&th=1&psc=1&language=en_US")
-check(title="משקפי שמש", url="https://www.amazon.com/Ray-Ban-Polarized-Rectangular-Sunglasses-Gradient/dp/B00NH9DWXI/ref=sr_1_3?dchild=1&keywords=RB4179&qid=1626975182&sr=8-3")
+check(title="Sunglasses", url="https://www.amazon.com/Ray-Ban-Polarized-Rectangular-Sunglasses-Gradient/dp/B00NH9DWXI/ref=sr_1_3?dchild=1&keywords=RB4179&qid=1626975182&sr=8-3")
 # schedule.every().day.at("23:50").do(check)
 # while True:
     # schedule.run_pending()
