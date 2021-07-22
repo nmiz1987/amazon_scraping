@@ -30,7 +30,7 @@ def check(title, url):
         
     
     msg = f"price: {price}$"
-    print("--------------------> ",soup.find(id='priceblock_ourprice').get_text())
+    print("--------------------> ",soup.find(id='priceblock_ourprice'))
     requests.get(send_url + title + "\n"+msg +"\n"+ url)
 
 check(title="500G SSD", url="https://www.amazon.com/dp/B08S8J19XJ?tag=camelproducts-20&linkCode=ogi&th=1&psc=1&language=en_US")
