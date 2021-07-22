@@ -15,7 +15,7 @@ print("Program starts...")
 
 def check(title, url):
     r = requests.get(url, headers=HEADERS)
-    soup = bs4.BeautifulSoup(r.content, features="lxml")
+    soup = bs4.BeautifulSoup(r.content, features="html5lib")
     # to prevent script from crashing when there isn't a price for the product
     try:
         price = float(soup.find(id='priceblock_ourprice').get_text().replace('.', '').replace('€', '').replace(',', '.').strip())
