@@ -15,6 +15,7 @@ print("Program starts...")
 
 def check(title, url):
     r = requests.get(url, headers=HEADERS)
+    time.sleep(5)
     soup = bs4.BeautifulSoup(r.content, features="lxml")
     # this part gets the price in dollars from amazon.com store
     try:
