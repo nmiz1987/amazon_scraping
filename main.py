@@ -25,20 +25,20 @@ def check(title, url):
         price = ''
         print("Error info:", err)
 
-    price1 = soup.find(id='priceblock_ourprice').get_text().replace('$', '').replace(',', '').strip()
-    price2 = soup.find(id='priceblock_ourprice').get_text().replace('$', '').replace(',', '')
-    price3 = soup.find(id='priceblock_ourprice').get_text().replace('$', '')
-    price4 = soup.find(id='priceblock_ourprice').get_text()
-    price5 = soup.find(id='priceblock_ourprice')    
+    # price1 = soup.find(id='priceblock_ourprice').get_text().replace('$', '').replace(',', '').strip()
+    # price2 = soup.find(id='priceblock_ourprice').get_text().replace('$', '').replace(',', '')
+    # price3 = soup.find(id='priceblock_ourprice').get_text().replace('$', '')
+    # price4 = soup.find(id='priceblock_ourprice').get_text()
+    # price5 = soup.find(id='priceblock_ourprice')    
     msg = f"price: {price}$"
     print("--------------------> ",msg)
     # requests.get(send_url + title + ":\n"+msg +"\n"+ url)
-    requests.get(send_url + price)
-    requests.get(send_url + price1)
-    requests.get(send_url + price2)
-    requests.get(send_url + price3)
-    requests.get(send_url + price4)
-    requests.get(send_url + price5)
+    # requests.get(send_url + price)
+    # requests.get(send_url + price1)
+    # requests.get(send_url + price2)
+    # requests.get(send_url + price3)
+    # requests.get(send_url + price4)
+    # requests.get(send_url + price5)
     requests.get(send_url + soup)
 
 
