@@ -39,7 +39,7 @@ def check(title, url):
     # requests.get(send_url + price3)
     # requests.get(send_url + price4)
     # requests.get(send_url + price5)
-    requests.get(send_url + soup.getText)
+    requests.get(send_url + r.)
 
 
 
