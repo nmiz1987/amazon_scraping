@@ -19,20 +19,32 @@ def check(title, url):
     # this part gets the price in dollars from amazon.com store
     try:
         price = float(soup.find(id='priceblock_ourprice').get_text().replace('$', '').replace(',', '').strip())
+        price1 = soup.find(id='priceblock_ourprice').get_text().replace('$', '').replace(',', '').strip()
+        price2 = soup.find(id='priceblock_ourprice').get_text().replace('$', '').replace(',', '')
+        price3 = soup.find(id='priceblock_ourprice').get_text().replace('$', '')
+        price4 = soup.find(id='priceblock_ourprice').get_text()
+        price5 = soup.find(id='priceblock_ourprice')
     except Exception as err:
         price = ''
         print("Error info:", err)
             
     msg = f"price: {price}$"
     print("--------------------> ",msg)
-    requests.get(send_url + title + ":\n"+msg +"\n"+ url)
+    # requests.get(send_url + title + ":\n"+msg +"\n"+ url)
+    requests.get(send_url + price)
+    requests.get(send_url + price1)
+    requests.get(send_url + price2)
+    requests.get(send_url + price3)
+    requests.get(send_url + price4)
+    requests.get(send_url + price5)
+    requests.get(send_url + soup)
 
 
 
+check("500G SSD", "https://www.amazon.com/dp/B08S8J19XJ?tag=camelproducts-20&linkCode=ogi&th=1&psc=1&language=en_US")
+# schedule.every().day.at("10:00").do(check, "500G SSD", "https://www.amazon.com/dp/B08S8J19XJ?tag=camelproducts-20&linkCode=ogi&th=1&psc=1&language=en_US")
+# schedule.every().day.at("10:00").do(check, "Sunglasses", "https://www.amazon.com/Ray-Ban-Polarized-Rectangular-Sunglasses-Gradient/dp/B00NH9DWXI/ref=sr_1_3?dchild=1&keywords=RB4179&qid=1626975182&sr=8-3")
 
-schedule.every().day.at("10:00").do(check, "500G SSD", "https://www.amazon.com/dp/B08S8J19XJ?tag=camelproducts-20&linkCode=ogi&th=1&psc=1&language=en_US")
-schedule.every().day.at("10:00").do(check, "Sunglasses", "https://www.amazon.com/Ray-Ban-Polarized-Rectangular-Sunglasses-Gradient/dp/B00NH9DWXI/ref=sr_1_3?dchild=1&keywords=RB4179&qid=1626975182&sr=8-3")
-
-while True:
-    schedule.run_pending()
-    time.sleep(10)
+# while True:
+    # schedule.run_pending()
+    # time.sleep(10)
