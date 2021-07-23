@@ -19,15 +19,16 @@ def check(title, url):
     # this part gets the price in dollars from amazon.com store
     try:
         price = float(soup.find(id='priceblock_ourprice').get_text().replace('$', '').replace(',', '').strip())
-        price1 = soup.find(id='priceblock_ourprice').get_text().replace('$', '').replace(',', '').strip()
-        price2 = soup.find(id='priceblock_ourprice').get_text().replace('$', '').replace(',', '')
-        price3 = soup.find(id='priceblock_ourprice').get_text().replace('$', '')
-        price4 = soup.find(id='priceblock_ourprice').get_text()
-        price5 = soup.find(id='priceblock_ourprice')
+        
     except Exception as err:
         price = ''
         print("Error info:", err)
-            
+
+    price1 = soup.find(id='priceblock_ourprice').get_text().replace('$', '').replace(',', '').strip()
+    price2 = soup.find(id='priceblock_ourprice').get_text().replace('$', '').replace(',', '')
+    price3 = soup.find(id='priceblock_ourprice').get_text().replace('$', '')
+    price4 = soup.find(id='priceblock_ourprice').get_text()
+    price5 = soup.find(id='priceblock_ourprice')    
     msg = f"price: {price}$"
     print("--------------------> ",msg)
     # requests.get(send_url + title + ":\n"+msg +"\n"+ url)
@@ -42,8 +43,8 @@ def check(title, url):
 
 
 check("500G SSD", "https://www.amazon.com/dp/B08S8J19XJ?tag=camelproducts-20&linkCode=ogi&th=1&psc=1&language=en_US")
-# schedule.every().day.at("10:00").do(check, "500G SSD", "https://www.amazon.com/dp/B08S8J19XJ?tag=camelproducts-20&linkCode=ogi&th=1&psc=1&language=en_US")
-# schedule.every().day.at("10:00").do(check, "Sunglasses", "https://www.amazon.com/Ray-Ban-Polarized-Rectangular-Sunglasses-Gradient/dp/B00NH9DWXI/ref=sr_1_3?dchild=1&keywords=RB4179&qid=1626975182&sr=8-3")
+# schedule.every().day.at("07:00").do(check, "500G SSD", "https://www.amazon.com/dp/B08S8J19XJ?tag=camelproducts-20&linkCode=ogi&th=1&psc=1&language=en_US")
+# schedule.every().day.at("07:00").do(check, "Sunglasses", "https://www.amazon.com/Ray-Ban-Polarized-Rectangular-Sunglasses-Gradient/dp/B00NH9DWXI/ref=sr_1_3?dchild=1&keywords=RB4179&qid=1626975182&sr=8-3")
 
 # while True:
     # schedule.run_pending()
